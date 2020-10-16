@@ -16,14 +16,10 @@ const App = () => {
         <main className="react-calculator">
             <Result value={value}/>
             <Functions 
-                onContentClear={clear => {
-                    console.log("Content Clear")
-                    setStack("")
-                }} 
+                onContentClear={clear => setStack("")} 
                 onDelete={() => {
                     if(stack.length > 0){
                         const newStack = stack.substring(0, stack.length -1 )
-                        console.log("Delete", newStack)
                         setStack(newStack)
                     }
                 }}
@@ -33,16 +29,10 @@ const App = () => {
                     }
                 }}
             />
-            <Numbers onClickNumber={number => {
-                setStack(`${stack}${number}`)
-            }} />
+            <Numbers onClickNumber={number => setStack(`${stack}${number}`)} />
             <MathOperations 
-                onClickOperation={operation => {
-                    setStack(`${stack}${operation}`)
-                }}
-                onClickEqual={equal => {
-                    setStack(eval(stack.toString()))
-                }}
+                onClickOperation={operation => setStack(`${stack}${operation}`)}
+                onClickEqual={equal => setStack(eval(stack.toString()))}
             />
         </main>
     )
