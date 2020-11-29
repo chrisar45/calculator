@@ -1,5 +1,5 @@
 /* eslint no-eval: 0 */
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import words from 'lodash.words'
 import Functions from './components/Functions'
 import MathOperations from './components/MathOperations'
@@ -8,7 +8,7 @@ import Result from './components/Result'
 
 import './App.css'
 
-const App = () => {
+const App: FC = () => {
     const [ stack, setStack ] = useState("")
     const items = words(stack, /[^-^+^*^/]+/g)
     const value = items.length > 0 ? items[items.length-1] : "0"
